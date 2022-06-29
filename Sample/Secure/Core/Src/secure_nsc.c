@@ -22,6 +22,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "secure_nsc.h"
+#include "attestation.h"
 /** @addtogroup STM32L5xx_HAL_Examples
   * @{
   */
@@ -65,6 +66,12 @@ CMSE_NS_ENTRY void SECURE_RegisterCallback(SECURE_CallbackIDTypeDef CallbackId, 
     }
   }
 }
+
+CMSE_NS_ENTRY void SECURE_CFA_LOG(unsigned int logValue){
+	CFA_Log(logValue);
+	return;
+}
+
 
 /**
   * @}
