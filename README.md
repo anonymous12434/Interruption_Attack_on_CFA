@@ -18,30 +18,23 @@ The problem of assuming atomicity on execution is that it implies on deactivatin
 
 This repository present one simple example of attack that can happen during the execution of a control flow attestation mechanism in a system with interruption enable. In this example we consider a code where the control flow graph has 3 main nodes in the MCU loops. Node 1 and Node 3 represents nodes that executes every iteration(we use "for" to simulate execution of random instructions, but in reallity they are supposed to not have any branching instruction inside). Each of the Nodes generates two logs in the format XY, where X in the number of the node and Y can be 1 (enter the node) and 2(leave the node).
 
-```
- // Node 1
- SECURE_Log_Attestation(11);
- for (int i = 0 ; i < 100; i++){}
- SECURE_Log_Attestation(12);
+https://github.com/anonymous12434/Interruption_Attack_on_CFA/blob/a10a431a755b723bea98ce1e2123192fad634411/Sample/NonSecure/Core/Src/attack.c#L95-L98
 
- ...
-
- // Node 3
- SECURE_Log_Attestation(11);
- for (int i = 0 ; i < 100; i++){}
- SECURE_Log_Attestation(12);
-```
+https://github.com/anonymous12434/Interruption_Attack_on_CFA/blob/a10a431a755b723bea98ce1e2123192fad634411/Sample/NonSecure/Core/Src/attack.c#L107-L110
 
 Node 2 represents a priviledged node that can only be accessed by changing the variable tAuth to 1. In our sample, tAuth is never changed, so the application is not supposed to run this node.
 
-```
-// Node 2
-if(tAuth){
-    SECURE_CFA_LOG(21);
-    priviledgeflag = True;
-    SECURE_CFA_LOG(22);
-}
-```
+https://github.com/anonymous12434/Interruption_Attack_on_CFA/blob/a10a431a755b723bea98ce1e2123192fad634411/Sample/NonSecure/Core/Src/attack.c#L100-L105
+
+
+
+The attack starts with the trigger of interruption handler 1 during the main loop of the MCU. This handler can be a code previously implemented by an attacker or can be an injection, e.g. buffer overflow code injection. 
+
+https://github.com/anonymous12434/Interruption_Attack_on_CFA/blob/a10a431a755b723bea98ce1e2123192fad634411/Sample/NonSecure/Core/Src/attack.c#L58-L88
+
+The attacker change interruption returning address to jump inside the priviledged code (line 103) and also set the interruption 2 to trigger after 39 10<sup>-8</sup> seconds. This is the exact time needed to the processor execute the 3 assembly instructions that compose the line 103 of the code. After 39 10<sup>-8</sup> seconds, the malicious interruption 2 is triggered. What interruption handler 2 do is basically change its returning address to the original returning address of interruption 1.
+
+https://github.com/anonymous12434/Interruption_Attack_on_CFA/blob/a10a431a755b723bea98ce1e2123192fad634411/Sample/NonSecure/Core/Src/attack.c#L29-L56
 
 In figure bellow, the left image illustrates the expected control flow graph of the example, while the right image illustrates the presented attack.
 
@@ -75,10 +68,10 @@ Bellow is the description of the steps needed to reproduce the code in this repo
         5. {Project_Name}_NonSecure/Core/Inc/stm32l5xx_it.h
         6. Secure_nsclib/secure_nsc.h
         7. {Project_Name}_Secure/Core/Src/secure_nsc.c
-        8. {Project_Name}_Secure/Core/Src/CFA.c
-        9. {Project_Name}_Secure/Core/Inc/CFA.h
+        8. {Project_Name}_Secure/Core/Src/attestation.c
+        9. {Project_Name}_Secure/Core/Inc/attestation.h
 
-    * Open the file NonSecure/Core/Src/attack.c and add breakpoints on the lines that have the following comment : "// Breakpoint"
+    * Open the file NonSecure/Core/Src/attack.c and add breakpoints on the lines that have the following comment : "// Add breakpoint here"
     * In the project explorer tab, right click on {Project_Name}_Secure -> Debug As -> STM32 Cortex-M C/C++ Application
     * Go to the tab Startup, then click Add to add the project {Project_Name}_NonSecure. The debug configuration should be similar with the image below :
 
