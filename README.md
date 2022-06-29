@@ -16,7 +16,22 @@ CFA mechanisms based on Trusted Executed Environment generally instrument the co
 
 The problem of assuming atomicity on execution is that it implies on deactivating asynchronous exception, e.g. interruptions, from the application . CFA methods are mainly proposed to work on low end embedded devices, and these kind of devices mostly relies on interruptions to provide low energy consumption and real-time control. Removing interruption make most of embedded applications inefficient and  even unfeasible in some cases. On the other side, enabling interruptions breaks the assumption of atomic execution and make it possible for an attacker to execute illegal control flow while generating a valid proof the integrity of the control flow.
 
-This repository present one simple example of attack that can happen during the execution of a control flow attestation mechanism in a system with interruption enable.
+This repository present one simple example of attack that can happen during the execution of a control flow attestation mechanism in a system with interruption enable. In this example we consider a code where the control flow graph has 3 main nodes in the MCU loops. Node 1 and Node 3 represents nodes that executes every iteration(we use "for" to simulate execution of random instructions, but in reallity they are supposed to not have any branching instruction inside), while Node 2 represents a 
+
+```
+ // Node 1
+ SECURE_Log_Attestation(11);
+ for (int i = 0 ; i < 100; i++){}
+ SECURE_Log_Attestation(12);
+
+ ...
+
+ // Node 3
+ SECURE_Log_Attestation(11);
+ for (int i = 0 ; i < 100; i++){}
+ SECURE_Log_Attestation(12);
+
+```
 
 In figure bellow, the left image illustrates the expected control flow graph of the example, while the right image illustrates the presented attack.
 
