@@ -50,7 +50,7 @@ https://github.com/anonymous12434/Interruption_Attack_on_CFA/blob/a10a431a755b72
 
 After interruping the operation being attested, the malicious ISR changes its own return address causing a jump inside Node 2 at line 103.
 
-It also configures a second malicious ISR (interrupt 2) to be triggered after 39x10<sup>-8</sup> seconds.
+It also configures a second malicious ISR (shown below) to be triggered after 39x10<sup>-8</sup> seconds.
 This is the exact time needed by the processor to execute line 103 in Node 2 and nothing more.
 Once triggered (after 39x10<sup>-8</sup> seconds), malicious ISR 2 changes its own return address to the original returning address of malicious ISR 1.
 
