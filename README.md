@@ -65,10 +65,9 @@ The right part illustrates the attack discussed so far.
 
 We make the following important observations:
 
-- This attack enables execution of any number of sub-sequences of instructions with the operation nodes/blocks. 
-- This interrupt redirection can be repeated any number of times to create arbitrary attack behavior leveraging out-of-order execution of various chuncks of instructions that exist within the benign binary. 
-- Both executions generate the exact same CFA logs. This is because the instructions that log control-flow transfers in the operation blocks are never reached.
-Malicious ISR 1 jumps past the logging of the block entry point. ISR 2 interrupts interrupts the block execution before the logging of the block exit point. Therefore, they are indistiguishable to the verifier that received the CFA results.
+- This attack enables execution of any sub-sequence ("chunk") of instructions with the operation nodes/blocks. 
+- This interrupt redirection can be repeated any number of times to create arbitrary execution behavior by leveraging out-of-order execution of various chuncks of instructions that exist within the benign binary. 
+- Both executions (benign and attacked) generate the exact same CFA logs. This is because the instructions that log the control-flow transfers within the operation blocks are never reached during the attack. Malicious ISR 1 jumps past the logging of the block entry point. ISR 2 interrupts the block execution before the logging of the block exit point. Therefore, the attacked execution is indistiguishable from the bening execution based on the CFA results received by the verifier.
 
 ## Reproducing the attack
 
