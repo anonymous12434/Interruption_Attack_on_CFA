@@ -11,8 +11,8 @@ The attacks discussed here were prototyped on the Arm-v8 Cortex-M33 MCU on a NUC
 ## Rationale
 
 CFA architectures generate an authenticated log of all control-flow transfers during the execution of a given software.
-This log can be used by a remote verifier to check the control-flow integrity system being attested (called a Prover).
-The log must be unforgeable by any software attacker that fully compromised the prover, except for its minimal CFA TCB.
+This log can be used by a remote verifier to check the control-flow integrity of tasks runing on the device being attested (called a Prover).
+The log must be unforgeable by any attacker that fully compromises the prover's software, except for its minimal CFA TCB (typically isoalted within a TEE).
 
 CFA mechanisms based on TEEs instrument the executable to log control flow transfers inside TEE-protected memory.
 Since non-branching instructions cannot produce control-flow transfers, only branching instructions (e.g, jumps, returns, calls, etc) are instrumented.
