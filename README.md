@@ -66,7 +66,7 @@ The right part illustrates the attack discussed so far.
 We make the following important observations:
 
 - This attack enables execution of any number of sub-sequences of instructions with the operation nodes/blocks. 
-- This process can be repeated any number of times to execute arbitrary programs using out of order execution of instructions within the expeted binary.  
+- This interrupt redirection can be repeated any number of times to create arbitrary attack behavior leveraging out-of-order execution of various chuncks of instructions that exist within the benign binary. 
 - Both executions generate the exact same CFA logs. This is because the instructions that log control-flow transfers in the operation blocks are never reached.
 Malicious ISR 1 jumps past the logging of the block entry point. ISR 2 interrupts interrupts the block execution before the logging of the block exit point. Therefore, they are indistiguishable to the verifier that received the CFA results.
 
