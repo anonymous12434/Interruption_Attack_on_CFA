@@ -18,7 +18,7 @@ CFA mechanisms based on TEEs instrument the executable to log control flow trans
 Since non-branching instructions cannot produce control-flow transfers, only branching instructions (e.g, jumps, returns, calls, etc) are instrumented.
 The CFA example in this repo is based on C-FLAT and thus uses blocks of instructions. A block is a sequence of non-branching instructions.
 Each block is instrumented to log two entries, one before the first instruction in the block and one before the the last instruction in the block (i.e., the branching instruction).
-The Figure bellow is an illustration of control flow graph, where each node represents a block of instructions.
+The Figure below is an illustration of control flow graph, where each node represents a block of instructions.
 
 ![alt text](imgs/cfanode.jpg)
 
@@ -56,7 +56,7 @@ Once triggered (after 39 10<sup>-8</sup> seconds), malicious ISR 2 changes its o
 
 https://github.com/anonymous12434/Interruption_Attack_on_CFA/blob/a10a431a755b723bea98ce1e2123192fad634411/Sample/NonSecure/Core/Src/attack.c#L29-L56
 
-In the figure bellow, the left part illustrates the expected control flow graph for the interrupt handling by a benign ISR.
+In the figure below, the left part illustrates the expected control flow graph for the interrupt handling by a benign ISR.
 The right part illustrates the attack discussed so far.
 
 ![alt text](imgs/attack_Example.png )
@@ -72,14 +72,14 @@ Malicious ISR 1 jumps past the logging of the block entry point. ISR 2 interrupt
 
 ## Reproducing the attack
 
-Bellow is the description of the steps needed to reproduce the code in this repository:
+Below is the description of the steps needed to reproduce the code in this repository:
 
 1. Download STM32CubeProgrammer 1.9.0 v2.10.0
 2. Connect NUCLEO-L552ZE-Q using the usb port.
 3. Open STM32CubeProgrammer:
     *   Connect with the NUCLEO-L552ZE-Q
     *   Go to user configuration and set "TZEN" and "DBANK" variables
-    *   Go to the security areas and set as bellow
+    *   Go to the security areas and set as below
 
 ![alt text](imgs/securityRegionsConf.png )
 
