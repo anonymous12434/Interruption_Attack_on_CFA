@@ -23,7 +23,7 @@ The Figure below is an illustration of and instrumented block (a.k.a. a node in 
 ![alt text](imgs/cfanode.jpg)
 
 The node/block instrumentation approach described above is only secure when interrupts are disabled.
-However, if interrupts are enabled, they can be leveraged to trigger control-flow transfers within blocks.
+When interrupts are enabled, they can be leveraged to trigger control-flow transfers within blocks.
 This repository exemplifies a class of attacks that leverage malicious interrupts to stealthly corrut the control-flow of the attested program.
 
 In this example, we consider a toy software operation composed of three blocks of instructions, i.e., 3 nodes in its control flow graph.
