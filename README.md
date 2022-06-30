@@ -14,7 +14,7 @@ CFA architectures generate an authenticated log of all control-flow transfers du
 This log can be used by a remote verifier to check the control-flow integrity of tasks runing on the device being attested (called a Prover).
 The log must be unforgeable by any attacker that fully compromises the prover's software, except for its minimal CFA TCB (typically isoalted within a TEE).
 
-CFA mechanisms based on TEEs instrument the executable to log control flow transfers inside TEE-protected memory.
+CFA mechanisms based on TEEs instrument the executable to log control flow transfers onto TEE-protected memory.
 Since non-branching instructions cannot produce control-flow transfers, only branching instructions (e.g, jumps, returns, calls, etc) are instrumented.
 The CFA example in this repo is based on C-FLAT and thus uses blocks of instructions. A block is a sequence of non-branching instructions.
 Each block is instrumented to log two entries, one before the first instruction in the block and one before the the last instruction in the block (i.e., the branching instruction).
