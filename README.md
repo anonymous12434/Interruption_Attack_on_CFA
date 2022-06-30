@@ -37,7 +37,7 @@ https://github.com/anonymous12434/Interruption_Attack_on_CFA/blob/a10a431a755b72
 
 https://github.com/anonymous12434/Interruption_Attack_on_CFA/blob/a10a431a755b723bea98ce1e2123192fad634411/Sample/NonSecure/Core/Src/attack.c#L107-L110
 
-Node 2 represents a priviledged node that can only be accessed by changing the variable tAuth to 1. In our sample, tAuth is never changed, so the attested operation is not supposed to run this node.
+Node 2 (below) represents a priviledged node that can only be accessed by changing the variable tAuth to 1. In this example, tAuth is never changed, so the attested operation is not supposed to run instructions within this node.
 
 https://github.com/anonymous12434/Interruption_Attack_on_CFA/blob/a10a431a755b723bea98ce1e2123192fad634411/Sample/NonSecure/Core/Src/attack.c#L100-L105
 
