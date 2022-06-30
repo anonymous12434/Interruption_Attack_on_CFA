@@ -26,7 +26,7 @@ The node/block instrumentation approach described above is only secure when inte
 However, if interrupts are enabled, they can be leveraged to trigger control-flow transfers within blocks.
 This repository exemplifies a class of attacks that leverage malicious interrupts to stealthly corrut the control-flow of the attested program.
 
-In this example we consider a software operation composed of three blocks of instructions, i.e., 3 nodes in its control flow graph.
+In this example, we consider a toy software operation composed of three blocks of instructions, i.e., 3 nodes in its control flow graph.
 This softwre operation executes repeatedly in the main application loop on the embedded device.
 Node 1 and Node 3 (below) execute at every iteration of the main loop.
 For simplicity we use a bogus "for" noting that, in reallity, nodes should not contain branching instructions (i.e., "for-s").
