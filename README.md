@@ -18,7 +18,7 @@ CFA mechanisms based on TEEs instrument the executable to log control flow trans
 Since non-branching instructions cannot produce control-flow transfers, only branching instructions (e.g, jumps, returns, calls, etc) are instrumented.
 The CFA example in this repo is based on C-FLAT and thus uses blocks of instructions. A block is a sequence of non-branching instructions.
 Each block is instrumented to log two entries, one before the first instruction in the block and one before the the last instruction in the block (i.e., the branching instruction).
-The Figure below is an illustration of control flow graph, where each node represents a block of instructions.
+The Figure below is an illustration of and instrumented block (a.k.a. a node in the program's control flow graph).
 
 ![alt text](imgs/cfanode.jpg)
 
