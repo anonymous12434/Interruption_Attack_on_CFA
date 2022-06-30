@@ -1,10 +1,10 @@
 # Interruption Attack on Control Flow Attestestation Mechanism
 
 This repository demonstrates interrupt-based attacks on Control Flow Attestation (CFA) architectures based on code instrumentation and TEEs, such as C-FLAT (ACM CCS'16) and follow ons, e.g., OAT (S&P'19).
-We note that C-FLAT original paper itself acknoleges that their design requires interrupts to be disabled.
-Therefore, the attacks in this repo shall not be interpreted as an oversight on C-FLAT's design.
-They serve instead as an illustration of the consequences of removing this requirement and to motivate alternative designs that can support interrupts securely.
-The attacks were prototyped on the Arm-v8 Cortex-M33 MCU on a NUCLEO-L552ZE-Q board.
+We note that C-FLAT original paper acknoleges that their design requires interrupts to be disabled.
+Therefore, the attacks in this repo should not be interpreted as a mistep on C-FLAT's design.
+They serve instead as (1) an illustration of the consequences of removing this requirement; and (2) as motivation to pursue alternative designs that can support interrupts securely, making CFA friendly to real-time tasks.
+The attacks discussed here were prototyped on the Arm-v8 Cortex-M33 MCU on a NUCLEO-L552ZE-Q board.
 
 ![alt text](imgs/nucle_l552ze-q2.jpg )
 
