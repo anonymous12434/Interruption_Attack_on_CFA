@@ -8,7 +8,7 @@ The attacks discussed here were prototyped on the Arm-v8 Cortex-M33 MCU on a NUC
 
 ![alt text](imgs/nucle_l552ze-q2.jpg )
 
-## Overview
+## Rationale
 
 CFA architectures generate an authenticated log of all control-flow transfers during the execution of a given software.
 This log can be used by a remote verifier to check the control-flow integrity system being attested (called a Prover).
@@ -60,6 +60,8 @@ In the figure bellow, the left part illustrates the expected control flow graph 
 The right part illustrates the attack discussed so far.
 
 ![alt text](imgs/attack_Example.png )
+
+## Take-aways
 
 We make the following important observations:
 
