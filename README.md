@@ -30,8 +30,8 @@ In this example, we consider a toy software operation composed of three blocks o
 This softwre operation executes repeatedly in the main application loop on the embedded device.
 Node 1 and Node 3 (below) execute at every iteration of the main loop.
 For simplicity we use a bogus "for" noting that, in reallity, nodes should not contain branching instructions (i.e., "for-s").
-Each of the Nodes generates two log entries in the format XY, where X is the node label and Y indicated is this entry corresponds to the first or last instruction within the noe.
-Number 1 is used for the node entry and number 2 for the the node exit.
+Each of the Nodes generates two log entries in the format XY, where X is the node label and Y indicated is this entry corresponds to the first or last instruction within the node.
+Number 1 is used for the node's entry point and number 2 for the node's exit point.
 
 https://github.com/anonymous12434/Interruption_Attack_on_CFA/blob/a10a431a755b723bea98ce1e2123192fad634411/Sample/NonSecure/Core/Src/attack.c#L95-L98
 
